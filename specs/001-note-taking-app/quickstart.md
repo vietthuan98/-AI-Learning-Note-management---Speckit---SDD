@@ -9,17 +9,17 @@
 2.  **Environment Setup**:
     ```bash
     cd notes-app
-    pnpm install
+    npm install
     ```
 
 3.  **Local Development**:
     ```bash
-    pnpm dev
+    npm run dev
     ```
 
 4.  **Running Tests**:
     ```bash
-    pnpm test
+    npm test
     ```
 
 ## Project Structure Overview

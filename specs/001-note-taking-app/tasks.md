@@ -17,11 +17,11 @@
 
 **Purpose**: Project initialization and basic structure in `notes-app/`
 
-- [ ] T001 Create project structure `notes-app/src/{components,hooks,lib,types}`
-- [ ] T002 Initialize Vite project with React 19 and TypeScript in `notes-app/`
-- [ ] T003 [P] Install dependencies: `vite`, `react`, `react-dom`, `@tailwindcss/vite`, `tailwindcss`, `lucide-react`, `shadcn-ui`, `mdx-editor`, `sonner`, `clsx`, `tailwind-merge`
-- [ ] T004 [P] Configure Tailwind CSS v4 in `notes-app/vite.config.ts` and `notes-app/src/index.css`
-- [ ] T005 [P] Initialize Vitest configuration and sample test in `notes-app/vite.config.ts`
+- [X] T001 Create project structure `notes-app/src/{components,hooks,lib,types}`
+- [X] T002 Initialize Vite project with React 19 and TypeScript in `notes-app/`
+- [X] T003 [P] Install dependencies: `vite`, `react`, `react-dom`, `@tailwindcss/vite`, `tailwindcss`, `lucide-react`, `shadcn-ui`, `mdx-editor`, `sonner`, `clsx`, `tailwind-merge`
+- [X] T004 [P] Configure Tailwind CSS v4 in `notes-app/vite.config.ts` and `notes-app/src/index.css`
+- [X] T005 [P] Initialize Vitest configuration and sample test in `notes-app/vite.config.ts`
 
 ---
 
@@ -31,10 +31,10 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T006 Define `Note` and `NoteStorage` types in `notes-app/src/types/note.ts`
-- [ ] T007 Implement LocalStorage persistence utility in `notes-app/src/lib/persistence.ts`
-- [ ] T008 [P] Create `titleGenerator` utility in `notes-app/src/lib/markdown.ts`
-- [ ] T009 [P] Setup basic App layout with Sidebar container in `notes-app/src/components/Layout.tsx`
+- [X] T006 Define `Note` and `NoteStorage` types in `notes-app/src/types/note.ts`
+- [X] T007 Implement LocalStorage persistence utility in `notes-app/src/lib/persistence.ts`
+- [X] T008 [P] Create `titleGenerator` utility in `notes-app/src/lib/markdown.ts`
+- [X] T009 [P] Setup basic App layout with Sidebar container in `notes-app/src/components/Layout.tsx`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -48,16 +48,16 @@
 
 ### Tests for User Story 1 (REQUIRED per Constitution: Tests MUST be written first)
 
-- [ ] T010 [US1] Unit tests for `titleGenerator` in `notes-app/tests/unit/markdown.test.ts`
-- [ ] T011 [US1] Unit tests for `persistence` in `notes-app/tests/unit/persistence.test.ts`
-- [ ] T012 [US1] Unit tests for `useAutoSave` logic in `notes-app/tests/unit/useAutoSave.test.ts`
+- [X] T010 [US1] Unit tests for `titleGenerator` in `notes-app/tests/unit/markdown.test.ts`
+- [X] T011 [US1] Unit tests for `persistence` in `notes-app/tests/unit/persistence.test.ts`
+- [X] T012 [US1] Unit tests for `useAutoSave` logic in `notes-app/tests/unit/useAutoSave.test.ts`
 
 ### Implementation for User Story 1 (Blocks on Phase 3 Tests)
 
-- [ ] T013 [US1] Implement `useAutoSave` custom hook with 500ms debounce in `notes-app/src/hooks/useAutoSave.ts`
-- [ ] T014 [US1] Implement `useNotes` hook for state management (CRUD) in `notes-app/src/hooks/useNotes.ts`
-- [ ] T015 [US1] Integrate MDXEditor component with live-preview support in `notes-app/src/components/Editor.tsx`
-- [ ] T016 [US1] Connect Editor to `useNotes` and `useAutoSave` in `notes-app/src/main.tsx`
+- [X] T013 [US1] Implement `useAutoSave` custom hook with 500ms debounce in `notes-app/src/hooks/useAutoSave.ts`
+- [X] T014 [US1] Implement `useNotes` hook for state management (CRUD) in `notes-app/src/hooks/useNotes.ts`
+- [X] T015 [US1] Integrate MDXEditor component with live-preview support in `notes-app/src/components/Editor.tsx`
+- [X] T016 [US1] Connect Editor to `useNotes` and `useAutoSave` in `notes-app/src/main.tsx` (via App.tsx)
 
 **Checkpoint**: User Story 1 is functional - notes can be created, auto-titled, and auto-saved.
 
@@ -71,11 +71,11 @@
 
 ### Implementation for User Story 2
 
-- [ ] T017 [P] [US2] Create `NoteList` sidebar component in `notes-app/src/components/NoteList.tsx`
-- [ ] T018 [P] [US2] Create `NoteCard` component for dashboard grid in `notes-app/src/components/NoteCard.tsx`
-- [ ] T019 [US2] Implement note selection and navigation logic in `useNotes` hook
-- [ ] T020 [US2] Implement Delete Note functionality with confirmation in `notes-app/src/components/DeleteDialog.tsx`
-- [ ] T021 [US2] Assemble Dashboard view (grid or list toggle) in `notes-app/src/components/Dashboard.tsx`
+- [X] T017 [P] [US2] Create `NoteList` sidebar component in `notes-app/src/components/NoteList.tsx`
+- [X] T018 [P] [US2] Create `NoteCard` component for dashboard grid in `notes-app/src/components/NoteCard.tsx`
+- [X] T019 [US2] Implement note selection and navigation logic in `useNotes` hook
+- [X] T020 [US2] Implement Delete Note functionality with confirmation in `notes-app/src/components/DeleteDialog.tsx`
+- [X] T021 [US2] Assemble Dashboard view (grid or list toggle) in `notes-app/src/components/Dashboard.tsx`
 
 **Checkpoint**: User Stories 1 AND 2 are functional - users can capture and manage multiple notes.
 
@@ -89,10 +89,10 @@
 
 ### Implementation for User Story 3
 
-- [ ] T022 [P] [US3] Import and configure Inter/Outfit font in `notes-app/src/index.css`
-- [ ] T023 [P] [US3] Add micro-animations (hover effects, transitions) to `NoteCard` and buttons
-- [ ] T024 [US3] Implement responsive Sidebar navigation for mobile (using Sheet/Drawer)
-- [ ] T025 [US3] Style scrollbars and editor container for "distraction-free" feel
+- [X] T022 [P] [US3] Import and configure Inter/Outfit font in `notes-app/src/index.css` (and index.html)
+- [X] T023 [P] [US3] Add micro-animations (hover effects, transitions) to `NoteCard` and buttons
+- [X] T024 [US3] Implement responsive Sidebar navigation for mobile (using Sheet/Drawer)
+- [X] T025 [US3] Style scrollbars and editor container for "distraction-free" feel
 
 **Checkpoint**: All user stories are functional and visually polished.
 
@@ -102,13 +102,13 @@
 
 **Purpose**: Improvements that affect multiple user stories and overall application quality.
 
-- [ ] T026 [P] Implement Toast notifications for save/error status using `sonner`
-- [ ] T027 Add "Empty State" illustration for dashboard and editor
-- [ ] T028 Performance optimization: Ensure effective debounce and minimize re-renders using `React.memo` where necessary
-- [ ] T029 [P] Final documentation updates in `README.md`
-- [ ] T030 Run `quickstart.md` validation and final end-to-end manual test
-- [ ] T031 [SC-001] Performance Benchmark: Run Lighthouse audit and verify "App Load to Typing" is < 3s.
-- [ ] T032 [FR-009] Implement `StorageErrorBanner` for persistent critical failures (e.g., Quota Exceeded).
+- [X] T026 [P] Implement Toast notifications for save/error status using `sonner`
+- [X] T027 Add "Empty State" illustration for dashboard and editor
+- [X] T028 Performance optimization: Ensure effective debounce and minimize re-renders using `React.memo` where necessary
+- [X] T029 [P] Final documentation updates in `README.md`
+- [X] T030 Run `quickstart.md` validation and final end-to-end manual test
+- [X] T031 [SC-001] Performance Benchmark: Run Lighthouse audit and verify "App Load to Typing" is < 3s.
+- [X] T032 [FR-009] Implement `StorageErrorBanner` for persistent critical failures (e.g., Quota Exceeded).
 
 ---
 

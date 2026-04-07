@@ -14,30 +14,32 @@ export function NoteCard({ note, onSelect, onDelete }: NoteCardProps) {
 
   return (
     <div
-      className="group relative bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-[var(--radius-lg)] p-5 cursor-pointer transition-all duration-[var(--transition-normal)] hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-glow)] hover:-translate-y-0.5 active:scale-[0.98]"
+      className="group relative bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:border-[var(--color-accent)]/30 hover:shadow-2xl hover:shadow-[var(--color-accent-glow)] hover:-translate-y-1 active:scale-[0.98]"
       onClick={onSelect}
       id={`note-card-${note.id}`}
       role="article"
     >
       {/* Title */}
-      <div className="flex items-start gap-2 mb-2">
-        <FileText
-          size={16}
-          className="text-[var(--color-accent)] mt-0.5 shrink-0 transition-transform duration-[var(--transition-fast)] group-hover:scale-110"
-        />
-        <h3 className="font-semibold text-[var(--color-text-primary)] text-sm leading-tight line-clamp-2">
-          {note.title || 'Untitled Note'}
+      <div className="flex items-start gap-3 mb-3">
+        <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[var(--color-bg-secondary)] flex items-center justify-center border border-[var(--color-border)] group-hover:border-[var(--color-accent)]/20 transition-colors">
+          <FileText
+            size={16}
+            className="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors"
+          />
+        </div>
+        <h3 className="font-bold text-[var(--color-text-primary)] text-lg leading-tight line-clamp-2 tracking-tight" style={{ fontFamily: 'Outfit, sans-serif' }}>
+          {note.title || 'Untitled Thought'}
         </h3>
       </div>
 
       {/* Preview */}
-      <p className="text-[var(--color-text-muted)] text-xs leading-relaxed line-clamp-3 mb-3 ml-6">
-        {preview}
+      <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed line-clamp-3 mb-6 ml-11 font-medium italic opacity-80">
+        {preview || 'No content yet...'}
       </p>
 
       {/* Footer */}
-      <div className="flex items-center justify-between ml-6">
-        <span className="text-[var(--color-text-muted)] text-[11px]">{timeAgo}</span>
+      <div className="flex items-center justify-between ml-11 pt-4 border-t border-[var(--color-border)]">
+        <span className="text-[var(--color-text-muted)] text-xs font-bold uppercase tracking-widest">{timeAgo}</span>
 
         {/* Delete button */}
         <button
@@ -45,11 +47,11 @@ export function NoteCard({ note, onSelect, onDelete }: NoteCardProps) {
             e.stopPropagation();
             onDelete();
           }}
-          className="p-1.5 rounded-[var(--radius-sm)] text-[var(--color-text-muted)] opacity-0 group-hover:opacity-100 hover:text-[var(--color-danger)] hover:bg-[var(--color-danger)]/10 transition-all duration-[var(--transition-fast)]"
+          className="p-2 rounded-lg text-[var(--color-text-muted)] opacity-0 group-hover:opacity-100 hover:text-[var(--color-danger)] hover:bg-[var(--color-danger)]/10 transition-all"
           id={`note-delete-${note.id}`}
           aria-label={`Delete note: ${note.title}`}
         >
-          <Trash2 size={14} />
+          <Trash2 size={16} />
         </button>
       </div>
     </div>

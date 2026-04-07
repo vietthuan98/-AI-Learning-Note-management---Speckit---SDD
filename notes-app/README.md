@@ -1,73 +1,79 @@
-# React + TypeScript + Vite
+# Premium Note-Taking Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A professional, local-first note-taking application built with **React 19**, **Tailwind CSS v4**, and **MDXEditor**.
 
-Currently, two official plugins are available:
+![Notes App Logo](public/favicon.svg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- ✨ **Premium UI/UX**: Dark-themed, distraction-free interface with smooth animations and "Outfit" typography.
+- 📝 **Markdown Live Preview**: Full WYSIWYG Markdown editing experience using MDXEditor.
+- 💾 **Auto-Save**: Background saving to LocalStorage with 500ms debounce.
+- 🏷️ **Smart Titling**: Automatic title generation from the first line of content or current timestamp.
+- 📱 **Responsive Design**: Fully functional on Mobile, Tablet, and Desktop.
+- 🔍 **Search**: Quickly find notes based on title or content.
+- 🚨 **Storage Monitoring**: Persistent alerts if LocalStorage quota is exceeded.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend**: React 19, TypeScript, Vite
+- **Styling**: Tailwind CSS v4 (CSS-first configuration)
+- **Editor**: MDXEditor
+- **Icons**: Lucide React
+- **Notifications**: Sonner
+- **Testing**: Vitest, React Testing Library, JSDOM
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Node.js (v20 or higher)
+- npm
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+
+1. Navigate to the project directory:
+   ```bash
+   cd notes-app
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Development
+
+Start the development server:
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Testing
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Run unit and integration tests:
+```bash
+npm test
 ```
+
+### Production Build
+
+Create an optimized production bundle:
+```bash
+npm run build
+```
+
+## Project Structure
+
+```text
+src/
+├── components/   # UI components (Dashboard, Editor, Sidebar, etc.)
+├── hooks/        # Custom hooks (useNotes, useAutoSave)
+├── lib/          # Utilities (persistence, markdown processing)
+├── types/        # TypeScript interfaces
+└── App.tsx       # Main application logic
+```
+
+## License
+
+MIT

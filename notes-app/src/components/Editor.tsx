@@ -16,7 +16,7 @@ import {
 } from '@mdxeditor/editor';
 import '@mdxeditor/editor/style.css';
 import { useRef, useEffect, useCallback } from 'react';
-import { ArrowLeft, Save, FileText } from 'lucide-react';
+import { ArrowLeft, FileText } from 'lucide-react';
 import type { SaveStatus } from '../hooks/useAutoSave';
 
 interface EditorProps {
@@ -55,27 +55,30 @@ export function Editor({
   );
 
   return (
-    <div className="flex flex-col h-full" id="editor-container">
+    <div className="flex flex-col h-full animate-[var(--animate-in)] bg-[var(--color-bg-primary)]" id="editor-container">
       {/* Editor header */}
-      <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+      <div className="flex items-center gap-4 px-6 h-16 shrink-0 border-b border-[var(--color-border)] bg-[var(--color-bg-secondary)]/50 backdrop-blur-md z-10">
         <button
           onClick={onBack}
-          className="p-2 rounded-[var(--radius-md)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-hover)] transition-all duration-[var(--transition-fast)]"
+          className="p-2 -ml-1 rounded-xl text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-hover)] transition-all active:scale-95"
           id="editor-back-btn"
           aria-label="Back to dashboard"
         >
-          <ArrowLeft size={18} />
+          <ArrowLeft size={20} />
         </button>
 
-        <div className="flex items-center gap-2 flex-1 min-w-0">
-          <FileText size={16} className="text-[var(--color-text-muted)] shrink-0" />
+        <div className="flex items-center gap-3 flex-1 min-w-0">
+          <div className="w-8 h-8 rounded-lg bg-[var(--color-bg-surface)] flex items-center justify-center border border-[var(--color-border)] shrink-0">
+            <FileText size={16} className="text-[var(--color-accent)]" />
+          </div>
           <input
             type="text"
             value={title}
             onChange={(e) => onTitleChange(e.target.value)}
-            placeholder={isAutoTitled ? 'Auto-generated title...' : 'Enter a title...'}
-            className="flex-1 bg-transparent text-[var(--color-text-primary)] font-medium text-sm border-none outline-none placeholder:text-[var(--color-text-muted)] placeholder:italic"
+            placeholder={isAutoTitled ? 'Auto-generated title...' : 'Name your thought...'}
+            className="flex-1 bg-transparent text-[var(--color-text-primary)] font-bold text-lg border-none outline-none placeholder:text-[var(--color-text-muted)] placeholder:italic tracking-tight focus:placeholder:opacity-50 transition-all"
             id="editor-title-input"
+            style={{ fontFamily: 'Outfit, sans-serif' }}
           />
         </div>
 
@@ -86,32 +89,37 @@ export function Editor({
       </div>
 
       {/* MDXEditor */}
-      <div className="flex-1 overflow-auto">
-        <MDXEditor
-          ref={editorRef}
-          markdown={content}
-          onChange={handleChange}
-          contentEditableClassName="prose prose-invert max-w-none"
-          plugins={[
-            headingsPlugin(),
-            listsPlugin(),
-            quotePlugin(),
-            thematicBreakPlugin(),
-            linkPlugin(),
-            linkDialogPlugin(),
-            markdownShortcutPlugin(),
-            toolbarPlugin({
-              toolbarContents: () => (
-                <>
-                  <BlockTypeSelect />
-                  <BoldItalicUnderlineToggles />
-                  <ListsToggle />
-                  <CreateLink />
-                </>
-              ),
-            }),
-          ]}
-        />
+      <div className="flex-1 overflow-auto custom-scrollbar">
+        <div className="max-w-[900px] mx-auto py-12 px-6 lg:px-12">
+          <MDXEditor
+            ref={editorRef}
+            markdown={content}
+            onChange={handleChange}
+            contentEditableClassName="prose prose-invert max-w-none prose-p:text-lg prose-headings:font-outfit prose-headings:tracking-tight prose-a:text-[var(--color-accent)] prose-blockquote:border-l-4 prose-blockquote:border-[var(--color-accent)]/30 prose-blockquote:bg-[var(--color-bg-surface)]/50 prose-blockquote:rounded-r-lg prose-blockquote:py-1"
+            plugins={[
+              headingsPlugin(),
+              listsPlugin(),
+              quotePlugin(),
+              thematicBreakPlugin(),
+              linkPlugin(),
+              linkDialogPlugin(),
+              markdownShortcutPlugin(),
+              toolbarPlugin({
+                toolbarContents: () => (
+                  <div className="flex items-center gap-1.5 p-1">
+                    <BlockTypeSelect />
+                    <div className="w-px h-6 bg-[var(--color-border)] mx-1" />
+                    <BoldItalicUnderlineToggles />
+                    <div className="w-px h-6 bg-[var(--color-border)] mx-1" />
+                    <ListsToggle />
+                    <div className="w-px h-6 bg-[var(--color-border)] mx-1" />
+                    <CreateLink />
+                  </div>
+                ),
+              }),
+            ]}
+          />
+        </div>
       </div>
     </div>
   );
@@ -122,19 +130,19 @@ function SaveStatusBadge({ status }: { status: SaveStatus }) {
 
   const config = {
     saving: {
-      text: 'Saving...',
-      className: 'text-[var(--color-text-muted)] animate-[var(--animate-pulse-subtle)]',
-      icon: <Save size={12} className="animate-pulse" />,
+      text: 'Syncing',
+      className: 'bg-[var(--color-bg-surface)] text-[var(--color-text-muted)] border-[var(--color-border)]',
+      icon: <div className="w-2 h-2 rounded-full bg-[var(--color-text-muted)] animate-pulse" />,
     },
     saved: {
       text: 'Saved',
-      className: 'text-[var(--color-success)]',
-      icon: <Save size={12} />,
+      className: 'bg-[var(--color-accent-glow)] text-[var(--color-accent)] border-[var(--color-accent)]/20',
+      icon: <div className="w-2 h-2 rounded-full bg-[var(--color-accent)]" />,
     },
     error: {
-      text: 'Error',
-      className: 'text-[var(--color-danger)]',
-      icon: <Save size={12} />,
+      text: 'Sync Error',
+      className: 'bg-red-500/10 text-red-500 border-red-500/20',
+      icon: <div className="w-2 h-2 rounded-full bg-red-500" />,
     },
   }[status];
 
@@ -142,7 +150,7 @@ function SaveStatusBadge({ status }: { status: SaveStatus }) {
 
   return (
     <span
-      className={`flex items-center gap-1.5 text-xs font-medium ${config.className} transition-all duration-[var(--transition-normal)]`}
+      className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest border transition-all duration-300 ${config.className}`}
       id="save-status-badge"
     >
       {config.icon}
